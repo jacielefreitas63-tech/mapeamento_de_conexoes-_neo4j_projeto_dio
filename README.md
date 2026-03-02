@@ -42,9 +42,7 @@ RETURN sugestao.nome_usuario AS Sugestao,
 ORDER BY AmigosEmComum DESC;
 ```
 
-
-```
-
+```cypher
 //Q2 Quais são os posts mais "quentes"?
 MATCH (p:Postagem)
 OPTIONAL MATCH (p)<-[:CURTIU]-(u)
@@ -56,7 +54,7 @@ RETURN p.conteudo AS Post,
 ORDER BY Score_Engajamento DESC;
 ```
 
-```
+```cypher
 // Q3 Aqui definimos o caminho usando a função shortestPath diretamente
 MATCH (origem:Usuario {nome_usuario: 'elisa_mkt'}), 
       (destino:Usuario {nome_usuario: 'diego_tech'})
@@ -64,7 +62,7 @@ MATCH p = shortestPath((origem)-[:SEGUE*..10]->(destino))
 RETURN p;
 ```
 
-```
+```cypher
 // Q4 Quem são os maiores influenciadores?
 MATCH (u:Usuario)
 OPTIONAL MATCH (u)<-[:SEGUE]-(seguidor)
